@@ -10,6 +10,6 @@ const server = http.createServer(app);
 
 server.listen(process.env.PORT || 5000, async () => {
   console.log(`Listening on port ${process.env.PORT}`.yellow);
-  await sequelize.sync({});
+  await sequelize.sync({ force: true });
   console.log('Connexion à la base de donnée : Ok');
 });

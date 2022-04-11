@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 
 //Cors
-
 const corsOptions = {
   origin: process.env.CLIENT_URL,
   credentials: true,
