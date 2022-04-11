@@ -12,13 +12,13 @@ Client : React
 
 Installation :
 
-cd server
-npm install
-npx sequelize-cli db:create groupomania
-npx sequelize-cli db:migrate
-npm start
+-cd server
+-npm install
+-npx sequelize-cli db:create groupomania
+-npx sequelize-cli db:migrate
+-npm start
 
 ENV : 
 
-PORT=5000
-CLIENT_URL=http://localhost:3000
+-PORT=5000
+-CLIENT_URL=http://localhost:3000
