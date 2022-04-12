@@ -11,18 +11,21 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
+          model: 'Users', // LE "S"
           key: id,
         },
       },
       message: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       picture: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       link: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,

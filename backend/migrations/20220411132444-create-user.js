@@ -10,21 +10,25 @@ module.exports = {
       },
       username: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING,
         unique: true,
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: false,
+        default: false,
       },
       picture: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       bio: {
         type: Sequelize.STRING,

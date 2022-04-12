@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.User.hasMany(models.Post),
+        models.User.hasMany(models.Comment),
+        models.User.hasMany(models.Like);
     }
   }
   User.init(
@@ -19,11 +22,11 @@ module.exports = (sequelize, DataTypes) => {
 
       password: { type: DataTypes.STRING, allowNull: false },
 
-      isAdmin: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+      isAdmin: { type: DataTypes.BOOLEAN, allowNull: false, default: false },
 
       picture: { type: DataTypes.STRING, allowNull: true }, //defaultValue:"image profil"
 
-      bio: { type: DataTypes.STRING },
+      bio: { type: DataTypes.STRING(350) },
     },
     {
       sequelize,

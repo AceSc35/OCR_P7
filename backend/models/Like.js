@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Like extends Model {
     /**
@@ -11,13 +9,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.Like.belongsTo(models.User, {
+        foreignKey: {
+          allowNull: false,
+        },
+        onDelete: 'CASCADE',
+      });
+
+      models.Like.belongsTo(models.Post, {
+        foreignKey: {
+          allowNull: false,
+        },
+        onDelete: 'CASCADE',
+      });
     }
   }
-  Like.init({
-    count: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Like',
-  });
+  Like.init(
+    {
+      count: { type: DataTypes.INTEGER, defaultValue: 0 },
+    },
+    {
+      sequelize,
+      modelName: 'Like',
+    }
+  );
   return Like;
 };
