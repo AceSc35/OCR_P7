@@ -3,8 +3,8 @@ const router = express.Router();
 
 //Controllers
 
-//const authController = require('../controllers/auth.controllers')
-//const userController = require('../controllers/user.controllers')
+const authController = require('../controllers/auth.controllers');
+const userController = require('../controllers/user.controllers');
 
 //Middlewares
 
@@ -12,14 +12,14 @@ const router = express.Router();
 
 //Auth
 
-//router.post('/register', authController.signUp)
-//router.post('/login', authController.signIn)
-//router.get('/logout', authController.logout)
+router.post('/register', authController.signUp);
+router.post('/login', authController.signIn);
+router.get('/logout', authController.logout);
 
 //Users
 
-//router.get('/:id', userController.getOneUser)
-//router.get('/', userController.getAllUsers )
+router.get('/:id', userController.getOneUser);
+router.get('/', userController.getAllUsers);
 //router.delete('/:id', userController.deleteUser )
 //router.put('/:id', multer, userController.updateUser )
 

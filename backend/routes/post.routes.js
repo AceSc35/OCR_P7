@@ -18,12 +18,18 @@ const router = express.Router();
 //router.get('/:id', postController.getOnePost )
 //router.put('/:id', multer, postController.updatePost)
 //router.delete('/:id', multer, postController.deletePost)
+
+// A voir
+
 //router.patch('like-post/:id', postController.likePost)
 //router.patch('unlike-post/:id', postController.unlikePost)
 
 //Comments
 
-//router.patch('/comment-post/:id', commentController.commentPost)
-//router.patch('/edit-post/:id', commentController.commentPost)
-//router.patch('/delete-comment-post/:id', commentController.commentPost)
+//router.post('/comment-post/:id', commentController.commentPost)
+//router.delete('/delete-comment-post/:id', commentController.deleteCommentPost)
 //router.get('/comments/:id', commentController.getComments)
+
+//A voir
+
+//router.patch('/edit-comment-post/:id', commentController.editCommentPost)
