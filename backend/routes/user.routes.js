@@ -8,7 +8,7 @@ const userController = require('../controllers/user.controllers');
 
 //Middlewares
 
-//const multer = require('../middlewares/multer.middlewares')
+const multer = require('../middlewares/multer.middlewares');
 
 //Auth
 
@@ -20,7 +20,7 @@ router.get('/logout', authController.logout);
 
 router.get('/:id', userController.getOneUser);
 router.get('/', userController.getAllUsers);
-//router.delete('/:id', userController.deleteUser )
-//router.put('/:id', multer, userController.updateUser )
+router.put('/:id', multer, userController.updateUser);
+router.delete('/:id', userController.deleteUser);
 
 module.exports = router;

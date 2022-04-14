@@ -19,11 +19,6 @@ const router = express.Router();
 //router.put('/:id', multer, postController.updatePost)
 //router.delete('/:id', multer, postController.deletePost)
 
-// A voir
-
-//router.patch('like-post/:id', postController.likePost)
-//router.patch('unlike-post/:id', postController.unlikePost)
-
 //Comments
 
 //router.post('/comment-post/:id', commentController.commentPost)
@@ -33,3 +28,8 @@ const router = express.Router();
 //A voir
 
 //router.patch('/edit-comment-post/:id', commentController.editCommentPost)
+
+// A voir
+
+//router.patch('like-post/:id', postController.likePost)
+//router.patch('unlike-post/:id', postController.unlikePost)

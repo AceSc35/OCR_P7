@@ -97,12 +97,10 @@ exports.signIn = async (req, res) => {
         res.status(200).send({
           user: {
             email: user.email,
-            username: user.username,
             id: user.id,
           },
           token: tokenData.token,
           sub: tokenData.sub,
-          username: tokenData.name,
         });
       }
     }
