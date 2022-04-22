@@ -3,19 +3,19 @@ const router = express.Router();
 
 //Controllers
 
-//const postController = require ('../controllers/post.controllers')
+const postController = require('../controllers/post.controllers');
 //const commentController = require('../controllers/comment.controllers')
 
 // Middlewares
 
-//const multer = require('../middlewares/multer.middlewares')
-//const auth = require('../middlewares/auth.middlewares')
+//const multer = require('../middlewares/multer.middlewares');
+//const auth = require('../middlewares/auth.middlewares');
 
 //Routes CRUD
 
 //router.post('/', multer, postController.createPost)
-//router.get('/', postController.getAllPosts )
-//router.get('/:id', postController.getOnePost )
+router.get('/', postController.getAllPosts);
+router.get('/:id', postController.getOnePost);
 //router.put('/:id', multer, postController.updatePost)
 //router.delete('/:id', multer, postController.deletePost)
 
@@ -33,3 +33,5 @@ const router = express.Router();
 
 //router.patch('like-post/:id', postController.likePost)
 //router.patch('unlike-post/:id', postController.unlikePost)
+
+module.exports = router;

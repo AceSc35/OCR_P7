@@ -64,7 +64,7 @@ module.exports.updateUser = async (req, res) => {
         avatar = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
       }
 
-      //S'il n'yas pas d'avatar par défaut, assigner une variable de l'avatar, avatar de la BDD
+      //S'il n'y a pas d'avatar par défaut, assigner une variable de l'avatar, avatar de la BDD
       if (avatar) {
         user.picture = avatar;
       }
