@@ -37,7 +37,7 @@ module.exports.getAllUsers = async (req, res) => {
 // Nous devons update l'utilisateur, cette fonction sert à update l'image, bio ainsi qu'a remplacer l'image de l'user déjà présente
 module.exports.updateUser = async (req, res) => {
   try {
-    //On chercher l'user par le tooken
+    //On chercher l'user par le token
     const userId = userIdByToken(req);
     let avatar;
     //On cherche l'id dans le paramètre de l'URL
@@ -50,7 +50,6 @@ module.exports.updateUser = async (req, res) => {
         avatar = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
 
         const filename = user.picture.split('/images')[1];
-        console.log(filename);
         //Remplacer l'image et supprimé l'image présente dans le local
         fs.unlink(`images/${filename}`, (error) => {
           if (error) {
@@ -101,13 +100,10 @@ module.exports.deleteUser = async (req, res) => {
 
     if (user.picture !== null && userId === user.id) {
       const filename = user.picture.split('/images')[1];
-      console.log(filename);
       fs.unlink(`images/${filename}`, () => {
         db.User.destroy({
           where: { id: id },
         });
-        console.log(user);
-        console.log(user.id);
         res.status(200).json({
           message: 'Votre compte a été supprimé ainsi que son image',
         });

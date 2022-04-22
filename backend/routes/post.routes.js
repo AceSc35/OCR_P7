@@ -8,16 +8,16 @@ const postController = require('../controllers/post.controllers');
 
 // Middlewares
 
-//const multer = require('../middlewares/multer.middlewares');
+const multer = require('../middlewares/multer.middlewares');
 //const auth = require('../middlewares/auth.middlewares');
 
 //Routes CRUD
 
-//router.post('/', multer, postController.createPost)
+router.post('/', multer, postController.createPost);
 router.get('/', postController.getAllPosts);
 router.get('/:id', postController.getOnePost);
-//router.put('/:id', multer, postController.updatePost)
-//router.delete('/:id', multer, postController.deletePost)
+router.put('/:id', multer, postController.updatePost);
+router.delete('/:id', multer, postController.deletePost);
 
 //Comments
 

@@ -14,10 +14,10 @@ function generateToken(user) {
 
 //Récupérer un id par rapport au token
 function userIdByToken(req) {
-  const token = req.headers.authorization.split(' ')[1];
-  const tokenVerify = jwt.verify(token, process.env.TOKEN_SECRET);
+  const token = req.headers.authorization.split(' ')[1]; // On récupère le token de la requete
+  const tokenVerify = jwt.verify(token, process.env.TOKEN_SECRET); //On vérifie le token
   const userId = tokenVerify.sub;
-  return userId;
+  return userId; // id du token
 }
 
 module.exports.generateToken = generateToken;

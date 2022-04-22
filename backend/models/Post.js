@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Post.init(
     {
       message: { type: DataTypes.STRING, allowNull: false },
-      picture: { type: DataTypes.STRING, allowNull: true },
+      postImg: { type: DataTypes.STRING, allowNull: true },
       link: { type: DataTypes.STRING, allowNull: true },
     },
     {
