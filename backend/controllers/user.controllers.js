@@ -92,13 +92,18 @@ module.exports.deleteUser = async (req, res) => {
   try {
     //On chercher l'user par le tooken
     const userId = userIdByToken(req);
+    const admin = await db.User.findOne({ where: { id: userId } });
     //On cherche l'id dans le paramètre de l'URL
     const user = await db.User.findOne({
       where: { id: id },
     });
+    console.log(admin);
     //Supprimer l'avatar si l'utilisateur en a un
-
-    if (user.picture !== null && userId === user.id) {
+    // Le compte peut être supprimer si le propre utilisateur le désire ||l'administrateur le pourra également
+    if (
+      (user.picture !== null && userId === user.id) ||
+      (user.picture !== null && admin.isAdmin === true)
+    ) {
       const filename = user.picture.split('/images')[1];
       fs.unlink(`images/${filename}`, () => {
         db.User.destroy({
@@ -109,7 +114,10 @@ module.exports.deleteUser = async (req, res) => {
         });
       });
     } else {
-      if (user.picture === null && userId === user.id) {
+      if (
+        (user.picture === null && userId === user.id) ||
+        (user.picture === null && admin.isAdmin === true)
+      ) {
         db.User.destroy({
           where: { id: id },
         });

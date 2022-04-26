@@ -120,8 +120,10 @@ module.exports.deletePost = async (req, res) => {
   try {
     const userId = token.userIdByToken(req);
     const post = await db.Post.findOne({ where: { id: req.params.id } });
+    const admin = await db.User.findOne({ where: { id: userId } });
 
-    if (userId === post.UserId) {
+    //L'utilisateur propre au post peut le supprimer ||l'admin le peut également
+    if (userId === post.UserId || admin.isAdmin === true) {
       //On supprime également l'image sur le serveur s'il y en a une
       if (post.postImg) {
         const filename = post.postImg.split('/images/')[1];
@@ -148,10 +150,11 @@ module.exports.updatePost = async (req, res) => {
   try {
     let newPostImg;
     const userId = token.userIdByToken(req);
+    const admin = await db.User.findOne({ where: { id: userId } });
 
     let post = await db.Post.findOne({ where: { id: req.params.id } });
-    //Si l'utilisateur est le créateur du post, il pourra modifier celui-ci
-    if (userId === post.UserId) {
+    //Si l'utilisateur est le créateur du post, il pourra modifier celui-ci || L'admin pourra update le post également
+    if (userId === post.UserId || admin.isAdmin === true) {
       if (req.file) {
         newPostImg = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
         if (post.postImg) {

@@ -16,7 +16,7 @@ module.exports = {
           key: id,
         },
       },
-      posterId: {
+      postId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

@@ -4,12 +4,11 @@ const router = express.Router();
 //Controllers
 
 const postController = require('../controllers/post.controllers');
-//const commentController = require('../controllers/comment.controllers')
+const commentController = require('../controllers/comment.controllers');
 
 // Middlewares
 
 const multer = require('../middlewares/multer.middlewares');
-//const auth = require('../middlewares/auth.middlewares');
 
 //Routes CRUD
 
@@ -17,13 +16,16 @@ router.post('/', multer, postController.createPost);
 router.get('/', postController.getAllPosts);
 router.get('/:id', postController.getOnePost);
 router.put('/:id', multer, postController.updatePost);
-router.delete('/:id', multer, postController.deletePost);
+router.delete('/:id', postController.deletePost);
 
 //Comments
 
-//router.post('/comment-post/:id', commentController.commentPost)
-//router.delete('/delete-comment-post/:id', commentController.deleteCommentPost)
-//router.get('/comments/:id', commentController.getComments)
+router.post('/:id/comment-post', commentController.createCommentPost);
+router.delete('/delete-comment-post/:id', commentController.deleteCommentPost);
+
+//A voir
+
+//router.get('/comments/:id', commentController.getComments);
 
 //A voir
 
