@@ -1,13 +1,12 @@
-import { Button } from 'react-bootstrap';
+import React from 'react';
+import Routes from './components/Routes';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Button>Validax</Button>
-      </header>
+    <div>
+      <Routes />
     </div>
   );
-}
+};
 
 export default App;

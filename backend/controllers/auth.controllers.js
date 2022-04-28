@@ -85,12 +85,12 @@ exports.signIn = async (req, res) => {
     });
 
     if (user === null) {
-      return res.status(403).send({ error: `Email et/ou mot de passe incorrect` });
+      return res.status(400).send({ error: `Email et/ou mot de passe incorrect` });
     } else {
       const hash = await bcrypt.compare(req.body.password, user.password);
 
       if (!hash) {
-        return res.status(403).send({ error: 'Email et/ou mot de passe incorrect' });
+        return res.status(400).send({ error: 'Email et/ou mot de passe incorrect' });
       } else {
         const tokenData = token.generateToken(user);
         res.cookie('jwt', tokenData.token, { httpOnly: true });
@@ -105,7 +105,7 @@ exports.signIn = async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(403).send({
+    res.status(400).send({
       error: 'Veuillez rentrer un email et un mot de passe ',
     });
   }
