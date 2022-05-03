@@ -9,9 +9,10 @@ import Button from 'react-bootstrap/Button';
 const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   //Erreur de log
 
-  const emailPasswordError = document.querySelector('.emailpassword.error');
+  const emailError = document.querySelector('.email.error');
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,16 +27,16 @@ const SignInForm = () => {
       },
     })
       .then((res) => {
-        console.log(res);
-        if (res.data.errors) {
-          emailPasswordError.textContent = res.data.errors;
+        console.log(res.data);
+        if (res.data.error) {
+          emailError.textContent = res.data.error;
         } else {
           window.location = '/';
+          localStorage.setItem('user', JSON.stringify(res.data));
         }
       })
       .catch((err) => {
-        console.log(err);
-        if (err.response.status === 400) emailPasswordError.textContent = err.response.data.error;
+        if (err.response.status === 400) emailError.textContent = err.response.data.error;
       });
   };
 
@@ -59,7 +60,7 @@ const SignInForm = () => {
           value={password}
         />
       </Form.Group>
-      <div className="emailpassword error mb-2" style={{ color: '#dc3545' }}></div>
+      <div className="email error mb-2" style={{ color: '#dc3545' }}></div>
       <Button variant="danger" type="submit">
         Connexion
       </Button>

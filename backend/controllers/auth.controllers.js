@@ -1,7 +1,5 @@
 const bcrypt = require('bcrypt');
 const db = require('../models/index');
-const jwt = require('jsonwebtoken');
-const { signInErrors } = require('../utils/errors.utils');
 const token = require('../middlewares/token.middlewares');
 
 //Création de compte
@@ -97,7 +95,7 @@ exports.signIn = async (req, res) => {
         res.status(200).send({
           user: {
             email: user.email,
-            id: user.id,
+            username: user.username,
           },
           token: tokenData.token,
           sub: tokenData.sub,

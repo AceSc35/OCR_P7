@@ -2,17 +2,6 @@ li {
   list-style-type: none;
 }
 
-/* Button.active-btn {
-  background: #ff7b77;
-}
-Button.active-btn:hover {
-  background: #ffd0c4;
-}
-
-Button:not(.active-btn):hover {
-  transform: translateX(3px);
-} */
-
 .row-background {
   background: #ebc9d1;
   border: none;
@@ -21,4 +10,8 @@ Button:not(.active-btn):hover {
   text-align: center;
   padding: 20px;
   border-radius: 20px;
+}
+
+.profil {
+  text-decoration: none;
 }

@@ -12,7 +12,7 @@ module.exports.checkUser = (req, res, next) => {
       } else {
         let user = await db.User.findOne({
           where: {
-            id: decodedToken.id, // ------> Erreur ici
+            id: decodedToken.sub,
           },
         });
         res.locals.user = user;
@@ -36,7 +36,7 @@ module.exports.requireAuth = (req, res, next) => {
         } else {
           let user = await db.User.findOne({
             where: {
-              id: decodedToken.id, // ------> Erreur ici
+              id: decodedToken.sub,
             },
           });
           res.locals.user = user;
