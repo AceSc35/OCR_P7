@@ -80,10 +80,10 @@ module.exports.updateUser = async (req, res) => {
         user: createUser,
       });
     } else {
-      res.status(401).json({ error: `Vous n'êtes pas autorisé à modifier ce profil` });
+      res.status(400).json({ error: `Vous n'êtes pas autorisé à modifier ce profil` });
     }
   } catch (error) {
-    res.status(500).send({ error: `Vous n'êtes pas autorisé à modifier ce profil` });
+    res.status(403).send({ error: error.message });
   }
 };
 
@@ -97,7 +97,6 @@ module.exports.deleteUser = async (req, res) => {
     const user = await db.User.findOne({
       where: { id: id },
     });
-    console.log(admin);
     //Supprimer l'avatar si l'utilisateur en a un
     // Le compte peut être supprimer si le propre utilisateur le désire ||l'administrateur le pourra également
     if (
@@ -125,10 +124,10 @@ module.exports.deleteUser = async (req, res) => {
           message: 'Votre compte a été supprimé',
         });
       } else {
-        res.status(401).send({ error: `Vous n'êtes pas autorisé à supprimer ce profil` });
+        res.status(400).send({ error: `Vous n'êtes pas autorisé à supprimer ce profil` });
       }
     }
   } catch (error) {
-    res.status(500).send({ error: `Vous n'êtes pas autorisé à supprimer ce profil` });
+    res.status(403).send({ error: error.message });
   }
 };

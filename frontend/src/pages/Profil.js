@@ -14,7 +14,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 //Component
-import UpdateProfil from '../components/profil/UpdateProfil';
+import UpdateProfil from '../components/Profil/UpdateProfil';
 
 const Profil = () => {
   const uid = useContext(UidContext);

@@ -3,6 +3,7 @@ const colors = require('colors');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const path = require('path');
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
 
@@ -29,12 +30,13 @@ const { checkUser, requireAuth } = require('./middlewares/auth.middlewares');
 
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('*', checkUser);
 app.use('/jwtid', requireAuth, (req, res) => {
   res.status(200).send({
     jwt: req.cookies.jwt,
-    user: res.locals.user.dataValues,
+    user: res.locals.user,
   });
 });
 

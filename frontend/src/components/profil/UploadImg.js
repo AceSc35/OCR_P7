@@ -29,7 +29,6 @@ const UploadImg = () => {
           id="file"
           name="file"
           accept=".jpg, .jpeg, .png"
-          style={{ backgroundColor: '#ebc9d1' }}
           onChange={(e) => setFile(e.target.files[0])}
         />
         <Button variant="danger" id="button-addon2" type="submit" className="mt-1">

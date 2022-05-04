@@ -20,7 +20,7 @@ router.get('/logout', authController.logout);
 
 router.get('/:id', userController.getOneUser);
 router.get('/', userController.getAllUsers);
-router.put('/:id', multer, userController.updateUser);
+router.put('/images/:id', multer, userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 
 module.exports = router;
