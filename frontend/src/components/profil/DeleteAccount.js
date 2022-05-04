@@ -1,5 +1,5 @@
 import React from 'react';
-import Cookies from 'js-cookie';
+//import cookie from 'js-cookie';
 //Redux
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +18,6 @@ const DeleteAccount = () => {
 
   const handleDelete = () => {
     dispatch(deleteAccount(userData.id));
-    Cookies.remove('jwt', { path: '/' });
     localStorage.clear();
   };
 

@@ -5,6 +5,8 @@ export const UPLOAD_PICTURE = 'UPLOAD_PICTURE';
 export const UPDATE_BIO = 'UPDATE_BIO';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 
+//Récupérer un utilisateur
+
 export const getUser = (uid) => {
   //dispatch -> envoie aux réducers
   return (dispatch) => {
