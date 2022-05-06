@@ -1,0 +1,8 @@
+.border-container {
+  border: 2px solid rgb(235, 201, 209);
+  border-radius: 0.25rem;
+}
+
+.sans-bordure {
+  border: unset;
+}
