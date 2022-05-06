@@ -70,10 +70,9 @@ const UpdateProfil = () => {
           </>
         )}
         <br />
-        <h7>Membre depuis le : {dateParser(userData.createdAt)}</h7>
+        <h6>Membre depuis le : {dateParser(userData.createdAt)}</h6>
+        <DeleteAccount />
       </Container>
-
-      <DeleteAccount />
     </>
   );
 };

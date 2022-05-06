@@ -11,6 +11,9 @@ import Spinner from 'react-bootstrap/Spinner';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 //Utils
 
@@ -22,8 +25,12 @@ import '../../style/CardPost.css';
 
 const CardPost = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isUpdated, setIsUpdated] = useState(false);
+  const [textUpdate, setTextUpdate] = useState(null);
   const userData = useSelector((state) => state.userReducer);
   const postsData = useSelector((state) => state.postReducer);
+
+  const updateItem = async () => {};
 
   useEffect(() => {
     !isEmpty(postsData[0]) && setIsLoading(false);
@@ -80,29 +87,73 @@ const CardPost = ({ post }) => {
           </Card>
           <Card className="sans-bordure d-flex" style={{ marginLeft: '2%' }}>
             <Card.Body>
-              <div className="d-flex">
-                <div className="flex-shrink-0">
-                  {post.postImg && (
-                    <Image src={post.postImg} alt="post-img" width={300} className="mx-auto" />
-                  )}
-                  <div>{post.message}</div>
-                  {post.link && (
-                    <Col sm={4}>
-                      <iframe
-                        className="mb-4"
-                        title="post-video"
-                        width="300"
-                        height="300"
-                        src={post.link}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </Col>
-                  )}
-                  <span>{dateParser(post.createdAt)}</span>
-                </div>
-              </div>
+              {post.postImg && (
+                <Image
+                  src={post.postImg}
+                  alt="post-img"
+                  width={300}
+                  fluid={true}
+                  className="mx-auto"
+                />
+              )}
+              {isUpdated === false && <p>{post.message}</p>}
+              {isUpdated && (
+                <>
+                  <Form.Control
+                    as="textarea"
+                    id="message"
+                    name="message"
+                    size="md"
+                    rows="3"
+                    defaultValue={post.message}
+                    onChange={(e) => setTextUpdate(e.target.value)}
+                  />
+                  <div className="button-container">
+                    <Button onClick={updateItem}>Valider Modification</Button>
+                  </div>
+                </>
+              )}
+              {post.link && (
+                <Col sm={4}>
+                  <iframe
+                    className="mb-4"
+                    title="post-video"
+                    width="300"
+                    height="300"
+                    src={post.link}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </Col>
+              )}
+              <span>{dateParser(post.createdAt)}</span>
+              {userData.id === post.User.id ? (
+                <>
+                  <Image
+                    className="mt-2"
+                    width={20}
+                    height={20}
+                    fluid={true}
+                    onClick={() => setIsUpdated(!isUpdated)}
+                    src="./img/icons/edit.svg"
+                    alt="edit"
+                  />
+                </>
+              ) : (
+                userData.isAdmin && (
+                  <>
+                    <Image
+                      width={20}
+                      height={20}
+                      fluid={true}
+                      onClick={() => setIsUpdated(!isUpdated)}
+                      src="./img/icons/edit.svg"
+                      alt="edit"
+                    />
+                  </>
+                )
+              )}
             </Card.Body>
           </Card>
         </>
