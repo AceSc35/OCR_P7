@@ -32,7 +32,6 @@ const SignUpForm = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.data.error) {
           inscriptionError.textContent = res.data.error;
         } else {

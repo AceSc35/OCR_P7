@@ -111,6 +111,8 @@ module.exports.deleteUser = async (req, res) => {
         res.status(200).json({
           message: 'Votre compte a été supprimé ainsi que son image',
         });
+        jwt.Expires = Date.Now.AddDays(-1);
+        Response.Add('jwt');
       });
     } else {
       if (
@@ -123,6 +125,8 @@ module.exports.deleteUser = async (req, res) => {
         res.status(200).json({
           message: 'Votre compte a été supprimé',
         });
+        jwt.Expires = Date.Now.AddDays(-1);
+        Response.Add('jwt');
       } else {
         res.status(400).send({ error: `Vous n'êtes pas autorisé à supprimer ce profil` });
       }

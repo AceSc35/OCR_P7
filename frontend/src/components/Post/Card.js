@@ -26,11 +26,13 @@ import DeleteCard from './DeleteCard';
 //Style
 
 import '../../style/CardPost.css';
+import CardComments from './CardComments';
 
 const CardPost = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
+  const [showComments, setShowComments] = useState(false);
   const userData = useSelector((state) => state.userReducer);
   const postsData = useSelector((state) => state.postReducer);
   const dispatch = useDispatch();
@@ -47,14 +49,14 @@ const CardPost = ({ post }) => {
   }, [postsData]);
 
   return (
-    <Container fluid key={post.id} className="d-flex mb-4 border-container py-2">
+    <Container fluid className="d-flex mb-4 border-container py-2">
       {isLoading ? (
         <Spinner animation="border" role="status" variant="danger">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       ) : (
         <>
-          <Card style={{ width: '12rem' }}>
+          <Card style={{ width: '12rem', maxHeight: '270px' }}>
             <Card.Img
               width={100}
               height={150}
@@ -75,19 +77,14 @@ const CardPost = ({ post }) => {
               {!isEmpty(postsData[0]) &&
                 postsData.map((user) => {
                   if (user.id === post.id) {
-                    return <Card.Title>{user.User.username}</Card.Title>;
-                  } else {
-                    return null;
-                  }
-                })}
-              {!isEmpty(postsData[0]) &&
-                postsData.map((user) => {
-                  if (user.id === post.id) {
                     return (
-                      <Card.Text>
-                        <span>Membre depuis le : </span>
-                        <span style={{ fontSize: '12px' }}>{dateParser(userData.createdAt)}</span>
-                      </Card.Text>
+                      <>
+                        <Card.Title>{user.User.username}</Card.Title>
+                        <Card.Text>
+                          <span>Membre depuis le : </span>
+                          <span style={{ fontSize: '12px' }}>{dateParser(userData.createdAt)}</span>
+                        </Card.Text>
+                      </>
                     );
                   } else {
                     return null;
@@ -138,8 +135,6 @@ const CardPost = ({ post }) => {
                   </div>
                 </>
               )}
-
-              <span>{dateParser(post.createdAt)}</span>
               {userData.id === post.User.id ? (
                 <>
                   <Image
@@ -168,7 +163,20 @@ const CardPost = ({ post }) => {
                   </>
                 )
               )}
+              <Image
+                width={20}
+                height={20}
+                fluid={true}
+                onClick={() => setShowComments(!showComments)}
+                src="./img/icons/message1.svg"
+                alt="message"
+              />
+              <span>{post.Comments.length}</span>
+              {showComments && <CardComments post={post} />}
             </Card.Body>
+            <span className="d-flex justify-content-end px-1" style={{ fontSize: '12px' }}>
+              {dateParser(post.createdAt)}
+            </span>
           </Card>
         </>
       )}
