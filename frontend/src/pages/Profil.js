@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 //Component
-import Log from '../components/Log';
+//import Log from '../components/Log';
 
 //Utils
 
@@ -25,9 +25,9 @@ const Profil = () => {
         <UpdateProfil />
       ) : (
         <Row>
-          <Col>
+          {/* <Col>
             <Log signin={false} signup={true} />
-          </Col>
+          </Col> */}
           <Col>
             <Image src="./img/logo-groupomania/icon-above-font.svg" alt="img-log" />
           </Col>

@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <Container fluid>
       {uid ? <NewPostForm /> : <Log signin={true} signup={false} />}
-      <Thread />
+      {uid && <Thread />}
     </Container>
   );
 };

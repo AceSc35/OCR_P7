@@ -3,6 +3,7 @@ import axios from 'axios';
 //Posts
 
 export const GET_POSTS = 'GET_POSTS';
+export const ADD_POST = 'ADD_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
@@ -27,6 +28,22 @@ export const getPosts = (num) => {
         });
       })
       .catch((err) => err.message);
+  };
+};
+
+//Création de post
+export const addPost = (data) => {
+  const token = JSON.parse(localStorage.getItem('user')).token;
+  return (dispatch) => {
+    return axios({
+      method: 'post',
+      url: `${process.env.REACT_APP_API_URL}api/post/`,
+      data: data,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    });
   };
 };
 

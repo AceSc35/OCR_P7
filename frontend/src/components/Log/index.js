@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 
 const Log = (props) => {
   //Pour éditer SignIn/Signup
@@ -31,23 +32,27 @@ const Log = (props) => {
   return (
     <>
       <Container fluid>
-        <Row className="row-background">
-          <Col>
-            <li>
-              <Button
-                onClick={handleModals}
-                style={{ marginBottom: '10px' }}
-                id="register"
-                variant="outline-danger"
-              >
-                S'inscrire
-              </Button>
-            </li>
-            <li>
-              <Button onClick={handleModals} id="login" variant="outline-danger">
-                Se connecter
-              </Button>
-            </li>
+        <Row className="row-background" style={{ minWidth: '0px', margin: 'auto', width: '83%' }}>
+          <Col
+            className="d-flex flex-column justify-content-center align-items-center"
+            style={{ gap: '10px' }}
+          >
+            <Button
+              onClick={handleModals}
+              style={{ marginBottom: '10px', width: '119px' }}
+              id="register"
+              variant="outline-danger"
+            >
+              S'inscrire
+            </Button>
+            <Button
+              onClick={handleModals}
+              id="login"
+              variant="outline-danger"
+              style={{ marginBottom: '10px', width: '119px' }}
+            >
+              Se connecter
+            </Button>
           </Col>
           <Col>
             {signUpModal && <SignUpForm />}
@@ -55,6 +60,12 @@ const Log = (props) => {
           </Col>
         </Row>
       </Container>
+      <Image
+        fluid
+        src="./img/logo-groupomania/icon-above-font.svg"
+        alt="img-log"
+        style={{ width: '500px', display: 'flex', margin: 'auto' }}
+      />
     </>
   );
 };
