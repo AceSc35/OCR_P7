@@ -10,6 +10,7 @@ import Logout from '../Log/Logout';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 
 //redux
 
@@ -24,23 +25,23 @@ const Nav = () => {
     <Navbar style={{ backgroundColor: '#ebc9d1' }} variant="dark" className="mb-4">
       <Container fluid>
         <Navbar.Brand href="/home">
-          <img
+          <Image
             alt="logo-groupomania"
             src="./img/logo-groupomania/icon-left-font-monochrome-white.svg"
             className="d-inline-block align-top"
-            width={'200px'}
+            width={'150px'}
           />{' '}
         </Navbar.Brand>
         {uid ? (
           <>
             <NavLink to="/profil" className={'profil'}>
-              <h6>Bienvenue {userData.username}</h6>
+              <h6 style={{ color: '#DC4535' }}>Bienvenue {userData.username}</h6>
             </NavLink>
             <Logout />
           </>
         ) : (
           <NavLink to="/profil">
-            <img src="./img/icons/login.svg" alt="login" />
+            <img src="./img/icons/login.svg" alt="login" style={{ width: '90%' }} />
           </NavLink>
         )}
       </Container>

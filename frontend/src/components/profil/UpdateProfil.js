@@ -9,8 +9,7 @@ import DeleteAccount from './DeleteAccount';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 
 //redux
 
@@ -31,49 +30,83 @@ const UpdateProfil = () => {
   };
 
   return (
-    <>
-      <Container fluid>
-        <h1>Profil de {userData.username}</h1>
-        <h3>Photo de profil</h3>
-        <Image src={userData.picture} alt="user-picture" width={300} height={300} />
-        <UploadImg />
-      </Container>
-      <Container fluid>
-        <h3>Bio</h3>
-        {/* On modifie les conditions updateForm sur false et ensuite sur true*/}
-        {updateForm === false && (
+    <Container fluid>
+      <>
+        <Container
+          fluid
+          className="d-flex flex-column align-items-center"
+          style={{ backgroundColor: 'rgb(235, 201, 209)', height: '223px' }}
+        >
           <>
-            <p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
-            <Button
-              variant="danger"
-              id="button-addon2"
-              className="mt-1"
-              onClick={() => setUpdateForm(!updateForm)}
-            >
-              Modifier bio
-            </Button>
+            <h1 className="my-3" style={{ color: 'white' }}>
+              Profil de {userData.username}
+            </h1>
+            <Image
+              src={userData.picture}
+              alt="user-picture"
+              width={200}
+              height={200}
+              roundedCircle
+              style={{
+                border: 'solid 5px #842029',
+                position: 'absolute',
+                top: '177px',
+                backgroundColor: 'white',
+              }}
+            />
           </>
-        )}
-        {updateForm && (
-          <>
-            <FloatingLabel controlId="floatingTextarea2">
-              <Form.Control
+        </Container>
+
+        <Card
+          className="d-flex flex-column align-items-center mt-2"
+          style={{ position: 'relative', top: '83px', border: 'none' }}
+        >
+          <h3>Bio</h3>
+          {/* On modifie les conditions updateForm sur false et ensuite sur true*/}
+          {updateForm === false && (
+            <>
+              <Card.Text onClick={() => setUpdateForm(!updateForm)} style={{ textAlign: 'center' }}>
+                {userData.bio}
+              </Card.Text>
+              <Button
+                variant="danger"
+                id="button-addon2"
+                className="mt-1"
+                onClick={() => setUpdateForm(!updateForm)}
+              >
+                Modifier bio
+              </Button>
+            </>
+          )}
+
+          {updateForm && (
+            <>
+              <textarea
                 type="text"
                 defaultValue={userData.bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-25 h-50"
-              />
-            </FloatingLabel>
-            <Button variant="danger" onClick={handleUpdate} className="mt-1">
-              Valider modifications
-            </Button>
-          </>
-        )}
-        <br />
-        <h6>Membre depuis le : {dateParser(userData.createdAt)}</h6>
-        <DeleteAccount />
-      </Container>
-    </>
+                className="w-50 h-50"
+                rows="3"
+                style={{ borderColor: 'rgb(132, 32, 41)', textAlign: 'center' }}
+              ></textarea>
+              <Button variant="danger" onClick={handleUpdate} className="mt-1">
+                Valider modifications
+              </Button>
+            </>
+          )}
+        </Card>
+
+        <Container
+          fluid
+          style={{ position: 'relative', top: '150px' }}
+          className="d-flex flex-column align-items-end"
+        >
+          <UploadImg />
+          <h6>Membre depuis le : {dateParser(userData.createdAt)}</h6>
+          <DeleteAccount />
+        </Container>
+      </>
+    </Container>
   );
 };
 

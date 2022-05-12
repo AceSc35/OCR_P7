@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 //Component
-//import Log from '../components/Log';
+import Log from '../components/Log';
 
 //Utils
 
@@ -9,7 +9,6 @@ import { UidContext } from '../components/Utils/AppContext';
 
 //Bootstrap Class
 import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -25,11 +24,8 @@ const Profil = () => {
         <UpdateProfil />
       ) : (
         <Row>
-          {/* <Col>
-            <Log signin={false} signup={true} />
-          </Col> */}
           <Col>
-            <Image src="./img/logo-groupomania/icon-above-font.svg" alt="img-log" />
+            <Log signin={false} signup={true} />
           </Col>
         </Row>
       )}
