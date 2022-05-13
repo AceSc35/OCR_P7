@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 
 //Components - Utils
 
-import Thread from '../components/Thread/Thread';
 import { UidContext } from '../components/Utils/AppContext';
+import Thread from '../components/Thread/Thread';
+import Log from '../components/Log';
 
-//bootstrap
+//Bootstrap
 
 import Container from 'react-bootstrap/Container';
 import NewPostForm from '../components/Post/NewPostForm';
-import Log from '../components/Log';
 
 const Home = () => {
   const uid = useContext(UidContext);

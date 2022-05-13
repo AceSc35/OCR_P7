@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 
-//Bootstrap class
-import '../../style/Log.css';
+//Bootstrap class + css
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
+import '../../style/Log.css';
 
 const Log = (props) => {
   //Pour éditer SignIn/Signup
@@ -32,16 +32,13 @@ const Log = (props) => {
   return (
     <>
       <Container fluid>
-        <Row className="row-background" style={{ minWidth: '0px', margin: 'auto', width: '83%' }}>
-          <Col
-            className="d-flex flex-column justify-content-center align-items-center"
-            style={{ gap: '10px' }}
-          >
+        <Row className="row-background-log">
+          <Col className="d-flex flex-column justify-content-center align-items-center col-leftside">
             <Button
               onClick={handleModals}
-              style={{ marginBottom: '10px', width: '119px' }}
               id="register"
               variant="outline-danger"
+              className="button-log"
             >
               S'inscrire
             </Button>
@@ -49,7 +46,7 @@ const Log = (props) => {
               onClick={handleModals}
               id="login"
               variant="outline-danger"
-              style={{ marginBottom: '10px', width: '119px' }}
+              className="button-log"
             >
               Se connecter
             </Button>
@@ -64,7 +61,7 @@ const Log = (props) => {
         fluid
         src="./img/logo-groupomania/icon-above-font.svg"
         alt="img-log"
-        style={{ width: '500px', display: 'flex', margin: 'auto' }}
+        className="img-log"
       />
     </>
   );

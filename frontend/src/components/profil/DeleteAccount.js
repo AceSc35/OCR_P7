@@ -1,10 +1,10 @@
 import React from 'react';
-//import cookie from 'js-cookie';
+
 //Redux
 
 import { useDispatch, useSelector } from 'react-redux';
 
-//Action
+//Actions
 
 import { deleteAccount } from '../../actions/user.actions';
 

@@ -24,7 +24,7 @@ const Logout = () => {
 
   return (
     <li onClick={logout}>
-      <img src="./img/icons/logout.svg" alt="logout" style={{ width: '90%' }} />
+      <img src="./img/icons/logout.svg" alt="logout" className="icon-logout" />
     </li>
   );
 };

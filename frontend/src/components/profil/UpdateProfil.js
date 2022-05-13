@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 
-//Components
-import UploadImg from './UploadImg';
-import DeleteAccount from './DeleteAccount';
-
-//bootstrap
-
-import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
 //redux
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateBio } from '../../actions/user.actions';
 import { dateParser } from '../Utils/Utils';
+
+//Components
+
+import UploadImg from './UploadImg';
+import DeleteAccount from './DeleteAccount';
+
+//Bootstrap
+
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import '../../style/ProfilStyle.css';
 
 const UpdateProfil = () => {
   const [bio, setBio] = useState('');
@@ -32,40 +34,26 @@ const UpdateProfil = () => {
   return (
     <Container fluid>
       <>
-        <Container
-          fluid
-          className="d-flex flex-column align-items-center"
-          style={{ backgroundColor: 'rgb(235, 201, 209)', height: '223px' }}
-        >
+        <Container fluid className="d-flex flex-column align-items-center img-container">
           <>
-            <h1 className="my-3" style={{ color: 'white' }}>
-              Profil de {userData.username}
-            </h1>
+            <h1 className="my-3 profil-name">Profil de {userData.username}</h1>
             <Image
               src={userData.picture}
               alt="user-picture"
               width={200}
               height={200}
               roundedCircle
-              style={{
-                border: 'solid 5px #842029',
-                position: 'absolute',
-                top: '177px',
-                backgroundColor: 'white',
-              }}
+              className="img-profilpage"
             />
           </>
         </Container>
 
-        <Card
-          className="d-flex flex-column align-items-center mt-2"
-          style={{ position: 'relative', top: '83px', border: 'none' }}
-        >
+        <Card className="d-flex flex-column align-items-center mt-2 card-container-bio">
           <h3>Bio</h3>
           {/* On modifie les conditions updateForm sur false et ensuite sur true*/}
           {updateForm === false && (
             <>
-              <Card.Text onClick={() => setUpdateForm(!updateForm)} style={{ textAlign: 'center' }}>
+              <Card.Text onClick={() => setUpdateForm(!updateForm)} className="text-bio">
                 {userData.bio}
               </Card.Text>
               <Button
@@ -85,9 +73,8 @@ const UpdateProfil = () => {
                 type="text"
                 defaultValue={userData.bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-50 h-50"
+                className="w-50 h-50 textarea-profil"
                 rows="3"
-                style={{ borderColor: 'rgb(132, 32, 41)', textAlign: 'center' }}
               ></textarea>
               <Button variant="danger" onClick={handleUpdate} className="mt-1">
                 Valider modifications
@@ -96,11 +83,7 @@ const UpdateProfil = () => {
           )}
         </Card>
 
-        <Container
-          fluid
-          style={{ position: 'relative', top: '150px' }}
-          className="d-flex flex-column align-items-end"
-        >
+        <Container fluid className="d-flex flex-column align-items-end bottom-profil">
           <UploadImg />
           <h6>Membre depuis le : {dateParser(userData.createdAt)}</h6>
           <DeleteAccount />

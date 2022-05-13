@@ -2,16 +2,49 @@ li {
   list-style-type: none;
 }
 
-.row-background {
+.row-background-log {
   background: #ebc9d1;
   border: none;
-  min-width: 320px;
-  width: 90%;
+  width: 83%;
   text-align: center;
   padding: 20px;
   border-radius: 20px;
+  min-width: 0px;
+  margin: auto !important;
 }
 
 .profil {
   text-decoration: none;
+}
+
+.col-leftside {
+  gap: 10px;
+}
+
+.button-log {
+  margin-bottom: 10px;
+  width: 119px;
+}
+
+.img-log {
+  width: 500px;
+  display: flex;
+  margin: auto;
+  margin-top: 45px;
+}
+
+.icon-logout {
+  width: 90% !important;
+}
+
+.custom-color {
+  color: #dc3545;
+}
+
+.navbar-color {
+  background-color: #ebc9d1 !important;
+}
+
+.img-navbar {
+  width: 150px !important;
 }

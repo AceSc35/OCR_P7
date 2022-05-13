@@ -1,12 +1,16 @@
 import React from 'react';
 
 //Redux
+
 import { useDispatch } from 'react-redux';
+
+//Actions
+
+import { deletePost } from '../../actions/post.actions';
 
 //Bootstrap
 
 import Image from 'react-bootstrap/Image';
-import { deletePost } from '../../actions/post.actions';
 
 function DeleteCard(props) {
   const dispatch = useDispatch();

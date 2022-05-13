@@ -1,18 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-//redux
+//Redux
 
 import { useDispatch, useSelector } from 'react-redux';
-
-//bootstrap
-
-import Container from 'react-bootstrap/Container';
-import Spinner from 'react-bootstrap/Spinner';
-import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/Image';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 //Actions
 
@@ -22,11 +12,18 @@ import { updatePost } from '../../actions/post.actions';
 
 import { dateParser, isEmpty } from '../Utils/Utils';
 import DeleteCard from './DeleteCard';
-
-//Style
-
-import '../../style/CardPost.css';
 import CardComments from './CardComments';
+
+//Bootstrap - Style
+
+import Container from 'react-bootstrap/Container';
+import Spinner from 'react-bootstrap/Spinner';
+import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import '../../style/CardPost.css';
 
 const CardPost = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);

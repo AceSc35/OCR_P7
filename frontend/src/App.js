@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-//Components
-import Routes from './components/Routes';
-import { getStorage } from './components/Utils/getStorage';
-import { UidContext } from './components/Utils/AppContext';
-
 //Redux
 
 import { useDispatch } from 'react-redux';
 import { getUser } from './actions/user.actions';
+
+//Components
+import Routes from './components/Routes';
+import { getStorage } from './components/Utils/getStorage';
+import { UidContext } from './components/Utils/AppContext';
 
 const App = () => {
   const [uid, setUid] = useState(null);
@@ -36,7 +36,7 @@ const App = () => {
     fetchToken();
 
     if (uid) dispatch(getUser(uid));
-  }, [uid]); //Chaque fois que uid évolue, on relance le useEffect
+  }, [dispatch, uid]); //Chaque fois que uid évolue, on relance le useEffect
 
   return (
     <UidContext.Provider value={uid}>

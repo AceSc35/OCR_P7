@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-//Component
+//Components
 
 import Card from '../Post/Card';
 
@@ -13,9 +13,10 @@ import Card from '../Post/Card';
 import { getPosts } from '../../actions/post.actions';
 
 //Utils
+
 import { isEmpty } from '../Utils/Utils';
 
-//bootstrap
+//Bootstrap
 
 import Container from 'react-bootstrap/Container';
 

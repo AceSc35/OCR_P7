@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-//bootstrap
+//Bootstrap
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -60,7 +60,7 @@ const SignInForm = () => {
           value={password}
         />
       </Form.Group>
-      <div className="email error mb-2" style={{ color: '#dc3545' }}></div>
+      <div className="email error mb-2 custom-color"></div>
       <Button variant="danger" type="submit">
         Connexion
       </Button>

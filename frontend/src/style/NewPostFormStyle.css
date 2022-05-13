@@ -1,0 +1,50 @@
+.card-noborder {
+  border: none !important;
+}
+
+.card-profil-form {
+  width: 50%;
+  border: none !important;
+}
+
+.card-profil-form-header {
+  background-color: rgb(235, 201, 209) !important ;
+}
+
+.text-area-color {
+  border-color: rgb(235, 201, 209) !important ;
+}
+
+.icon-img-file {
+  cursor: pointer;
+}
+
+.input-icon-img-file {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  transform: translate(-22px, 15px);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.input-icon-img-file:-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.footer-form-container {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 400px) and (min-width: 320px) {
+  .card-profil-form {
+    width: 100%;
+  }
+}

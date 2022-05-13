@@ -1,0 +1,35 @@
+.img-container {
+  background-color: rgb(235, 201, 209);
+  height: 223px !important;
+}
+
+.profil-name {
+  color: black;
+}
+
+.img-profilpage {
+  border: solid 5px #842029;
+  position: absolute !important;
+  top: 177px !important;
+  background-color: white;
+}
+
+.card-container-bio {
+  position: relative !important;
+  top: 83px !important;
+  border: none !important;
+}
+
+.text-bio {
+  text-align: center !important;
+}
+
+.textarea-profil {
+  border-color: rgb(132, 32, 41);
+  text-align: center !important;
+}
+
+.bottom-profil {
+  position: relative !important ;
+  top: 150px !important;
+}

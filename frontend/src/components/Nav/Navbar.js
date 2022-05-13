@@ -1,20 +1,21 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
-//components
+//Redux
+
+import { useSelector } from 'react-redux';
+
+//Components
 
 import { UidContext } from '../Utils/AppContext';
 import Logout from '../Log/Logout';
 
-//bootstrap
+//Bootstrap - Style
 
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
-
-//redux
-
-import { useSelector } from 'react-redux';
+import '../../style/Log.css';
 
 const Nav = () => {
   const uid = useContext(UidContext);
@@ -22,12 +23,12 @@ const Nav = () => {
   const userData = useSelector((state) => state.userReducer);
 
   return (
-    <Navbar style={{ backgroundColor: '#ebc9d1' }} variant="dark" className="mb-4">
+    <Navbar variant="dark" className="mb-4 navbar-color">
       <Container fluid>
         <Navbar.Brand href="/home">
           <Image
             alt="logo-groupomania"
-            src="./img/logo-groupomania/icon-left-font-monochrome-white.svg"
+            src="./img/logo-groupomania/icon-left-font-monochrome-black.svg"
             className="d-inline-block align-top"
             width={'150px'}
           />{' '}
@@ -35,13 +36,13 @@ const Nav = () => {
         {uid ? (
           <>
             <NavLink to="/profil" className={'profil'}>
-              <h6 style={{ color: '#DC4535' }}>Bienvenue {userData.username}</h6>
+              <h6 style={{ color: 'black' }}>Bienvenue {userData.username}</h6>
             </NavLink>
             <Logout />
           </>
         ) : (
           <NavLink to="/profil">
-            <img src="./img/icons/login.svg" alt="login" style={{ width: '90%' }} />
+            <img src="./img/icons/login.svg" alt="login" className="icon-logout" />
           </NavLink>
         )}
       </Container>

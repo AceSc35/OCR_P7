@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 
-//Component
+//Components
+
 import Log from '../components/Log';
+import UpdateProfil from '../components/Profil/UpdateProfil';
 
 //Utils
 
@@ -11,9 +13,6 @@ import { UidContext } from '../components/Utils/AppContext';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-//Component
-import UpdateProfil from '../components/Profil/UpdateProfil';
 
 const Profil = () => {
   const uid = useContext(UidContext);

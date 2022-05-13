@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-//Component
-
-import DeleteComment from './DeleteComment';
-
 //Redux
 
 import { useDispatch, useSelector } from 'react-redux';
+
+//Components
+
+import DeleteComment from './DeleteComment';
 
 //Actions
 

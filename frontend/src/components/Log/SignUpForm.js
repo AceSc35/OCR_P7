@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-//bootstrap
-
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
 //Components
 
 import SignInForm from './SignInForm';
+
+//Bootstrap
+
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const SignUpForm = () => {
   const [formSubmit, setFormSubmit] = useState(false);
@@ -49,9 +49,7 @@ const SignUpForm = () => {
       {formSubmit ? (
         <>
           <SignInForm />
-          <p className="mt-2" style={{ color: '#248232' }}>
-            L'inscription est un succès, veuillez-vous connecter
-          </p>
+          <p className="mt-2 custom-color">L'inscription est un succès, veuillez-vous connecter</p>
         </>
       ) : (
         <Form onSubmit={handleRegister}>
@@ -82,7 +80,7 @@ const SignUpForm = () => {
               value={password}
             />
           </Form.Group>
-          <div className="inputInscription error mb-3" style={{ color: '#dc3545' }}></div>
+          <div className="inputInscription error mb-3 custom-color"></div>
           <Button variant="danger" type="submit">
             S'inscrire
           </Button>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-//Utils - actions
+//Utils - Actions
 
 import { addPost, getPosts } from '../../actions/post.actions';
 import { isEmpty, timestampParser } from '../Utils/Utils';
@@ -17,6 +17,7 @@ import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import '../../style/NewPostFormStyle.css';
 
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -82,11 +83,8 @@ const NewPostForm = () => {
         </Spinner>
       ) : (
         <>
-          <Card style={{ width: '50%' }}>
-            <Card.Header
-              className="d-flex flex-column align-items-center"
-              style={{ backgroundColor: 'rgb(235, 201, 209)' }}
-            >
+          <Card className="card-profil-form">
+            <Card.Header className="d-flex flex-column align-items-center card-profil-form-header">
               <Image
                 roundedCircle
                 className="mb-2"
@@ -98,6 +96,7 @@ const NewPostForm = () => {
               <Card.Title>{userData.username}</Card.Title>
             </Card.Header>
             <Form.Control
+              className="text-area-color"
               as="textarea"
               size="md"
               rows="4"
@@ -131,18 +130,19 @@ const NewPostForm = () => {
                 )}
               </>
             ) : null}
-            <div className="icon">
+            <Container fluid className="footer-form-container">
               {isEmpty(link) && (
                 <>
                   <Image
-                    className="mt-2"
-                    width={20}
-                    height={20}
+                    className="mt-2 icon-img-file"
                     fluid={true}
+                    width={25}
+                    height={25}
                     src="./img/icons/picture.svg"
                     alt="post-img-newform"
                   />
                   <input
+                    className="input-icon-img-file"
                     type="file"
                     id="file"
                     name="file"
@@ -151,14 +151,23 @@ const NewPostForm = () => {
                   />
                 </>
               )}
-              {link && <Button onClick={() => setLink('')}>Supprimer la vidéo</Button>}
-            </div>
+              <Container fluid className="button-container mt-2">
+                {link && (
+                  <Button onClick={() => setLink('')} variant="danger">
+                    Supprimer la vidéo
+                  </Button>
+                )}
+                {message || postPicture || link.length > 20 ? (
+                  <Button onClick={cancelPost} variant="danger">
+                    Annuler message
+                  </Button>
+                ) : null}
 
-            {message || postPicture || link.length > 20 ? (
-              <Button onClick={cancelPost}>Annuler message</Button>
-            ) : null}
-
-            <Button onClick={handlePost}>Envoyer</Button>
+                <Button onClick={handlePost} variant="danger">
+                  Envoyer
+                </Button>
+              </Container>
+            </Container>
           </Card>
         </>
       )}

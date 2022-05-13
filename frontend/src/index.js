@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-// Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 //redux - react-redux
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
@@ -17,6 +14,9 @@ import rootReducer from './reducers';
 //dev tools
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { getUsers } from './actions/users.actions';
+
+// Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Création du store
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

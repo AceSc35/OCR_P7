@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
-//bootstrap
+//Redux
+
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadPicture } from '../../actions/user.actions';
+
+//Bootstrap - Style
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-
-//redux
-import { useDispatch, useSelector } from 'react-redux';
-import { uploadPicture } from '../../actions/user.actions';
 
 const UploadImg = () => {
   const [file, setFile] = useState();
