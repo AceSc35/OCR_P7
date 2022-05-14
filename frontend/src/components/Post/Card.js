@@ -46,135 +46,145 @@ const CardPost = ({ post }) => {
   }, [postsData]);
 
   return (
-    <Container fluid className="d-flex mb-4 border-container py-2">
+    <Container className="mb-5 d-flex flex-column" key={post.id}>
       {isLoading ? (
         <Spinner animation="border" role="status" variant="danger">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       ) : (
         <>
-          <Card style={{ width: '12rem', maxHeight: '270px' }}>
-            <Card.Img
-              width={100}
-              height={150}
-              variant="top"
-              src={
-                !isEmpty(postsData[0]) &&
-                postsData
-                  .map((user) => {
-                    if (user.id === post.id) return user.User.picture;
-                    else return null;
-                  })
-                  .join('')
-              }
-              alt="img-profil"
-              className="mx-auto"
-            />
-            <Card.Body>
+          <Card>
+            <Card.Header
+              style={{ backgroundColor: 'rgb(235, 201, 209' }}
+              className="d-flex flex-column align-items-center"
+            >
+              <Image
+                className="mb-2"
+                width={100}
+                height={100}
+                roundedCircle
+                src={
+                  !isEmpty(postsData[0]) &&
+                  postsData
+                    .map((user) => {
+                      if (user.id === post.id) return user.User.picture;
+                      else return null;
+                    })
+                    .join('')
+                }
+                alt="profil-img"
+              />
               {!isEmpty(postsData[0]) &&
                 postsData.map((user) => {
                   if (user.id === post.id) {
                     return (
-                      <>
-                        <Card.Title>{user.User.username}</Card.Title>
-                        <Card.Text>
-                          <span>Membre depuis le : </span>
-                          <span style={{ fontSize: '12px' }}>{dateParser(userData.createdAt)}</span>
-                        </Card.Text>
-                      </>
+                      <Card.Title className="mt-auto mb-auto">
+                        <h5>{user.User.username}</h5>
+                      </Card.Title>
                     );
-                  } else {
-                    return null;
-                  }
+                  } else return null;
                 })}
-            </Card.Body>
-          </Card>
-          <Card className="sans-bordure d-flex" style={{ marginLeft: '2%' }}>
-            <Card.Body>
-              {post.postImg && (
+            </Card.Header>
+
+            {post.postImg && (
+              <Col sm={3}>
                 <Image
-                  src={post.postImg}
-                  alt="post-img"
+                  className="mb-3"
                   width={300}
                   height={300}
                   fluid={true}
-                  className="mx-auto"
+                  src={post.postImg}
+                  alt="image-post"
                 />
-              )}
-              {post.link && (
-                <Col sm={4}>
-                  <iframe
-                    className="mb-4"
-                    title="post-video"
-                    width="300"
-                    height="300"
-                    src={post.link}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </Col>
-              )}
-              {isUpdated === false && <p>{post.message}</p>}
-              {isUpdated && (
-                <>
-                  <Form.Control
-                    as="textarea"
-                    id="message"
-                    name="message"
-                    size="md"
-                    rows="3"
-                    defaultValue={post.message}
-                    onChange={(e) => setTextUpdate(e.target.value)}
-                  />
-                  <div className="button-container">
-                    <Button onClick={updateItem}>Valider Modification</Button>
-                  </div>
-                </>
-              )}
-              {userData.id === post.User.id ? (
+              </Col>
+            )}
+
+            {post.link && (
+              <Col sm={4}>
+                <iframe
+                  className="mb-3"
+                  title="post-video"
+                  width="300"
+                  height="300"
+                  src={post.link}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </Col>
+            )}
+            {isUpdated === false && (
+              <>
+                <Card.Body>
+                  <Card.Text>{post.message}</Card.Text>
+                  <span className="d-flex justify-content-end px-1" style={{ fontSize: '12px' }}>
+                    {dateParser(post.createdAt)}
+                  </span>
+                </Card.Body>
+              </>
+            )}
+          </Card>
+          {isUpdated && (
+            <>
+              <Form.Control
+                as="textarea"
+                size="md"
+                rows="3"
+                name="message"
+                id="message"
+                defaultValue={post.message}
+                onChange={(e) => setTextUpdate(e.target.value)}
+              />
+              <Button className="mt-3 mb-3" variant="danger" onClick={updateItem}>
+                Valider
+              </Button>
+            </>
+          )}
+
+          <div className="d-flex mt-2">
+            {userData.id === post.User.id ? (
+              <>
+                <Image
+                  className="mt-2"
+                  style={{ marginRight: '3px' }}
+                  width={30}
+                  height={30}
+                  fluid={true}
+                  onClick={() => setIsUpdated(!isUpdated)}
+                  src="./img/icons/edit.svg"
+                  alt="edit"
+                />
+                <DeleteCard id={post.id} />
+              </>
+            ) : (
+              userData.isAdmin && (
                 <>
                   <Image
-                    className="mt-2"
-                    width={20}
-                    height={20}
+                    width={30}
+                    height={30}
                     fluid={true}
                     onClick={() => setIsUpdated(!isUpdated)}
+                    style={{ marginRight: '3px' }}
                     src="./img/icons/edit.svg"
                     alt="edit"
                   />
                   <DeleteCard id={post.id} />
                 </>
-              ) : (
-                userData.isAdmin && (
-                  <>
-                    <Image
-                      width={20}
-                      height={20}
-                      fluid={true}
-                      onClick={() => setIsUpdated(!isUpdated)}
-                      src="./img/icons/edit.svg"
-                      alt="edit"
-                    />
-                    <DeleteCard id={post.id} />
-                  </>
-                )
-              )}
-              <Image
-                width={20}
-                height={20}
-                fluid={true}
-                onClick={() => setShowComments(!showComments)}
-                src="./img/icons/message1.svg"
-                alt="message"
-              />
-              <span>{post.Comments.length}</span>
-              {showComments && <CardComments post={post} />}
-            </Card.Body>
-            <span className="d-flex justify-content-end px-1" style={{ fontSize: '12px' }}>
-              {dateParser(post.createdAt)}
-            </span>
-          </Card>
+              )
+            )}
+            <Image
+              className="mt-2"
+              width={30}
+              height={30}
+              fluid={true}
+              onClick={() => setShowComments(!showComments)}
+              src="./img/icons/message1.svg"
+              alt="show-comment"
+            />
+            <span>{post.Comments.length}</span>
+          </div>
+          <br />
+          {showComments && <CardComments post={post} />}
         </>
       )}
     </Container>

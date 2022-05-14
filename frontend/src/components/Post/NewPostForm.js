@@ -76,7 +76,7 @@ const NewPostForm = () => {
   }, [userData, message, link]);
 
   return (
-    <Container className="d-flex justify-content-center">
+    <Container fluid className="d-flex flex-column align-items-center">
       {isLoading ? (
         <Spinner animation="border" role="status" variant="danger">
           <span className="visually-hidden">Loading...</span>
@@ -99,76 +99,86 @@ const NewPostForm = () => {
               className="text-area-color"
               as="textarea"
               size="md"
-              rows="4"
+              rows="3"
               name="message"
               id="message"
               placeholder="Exprimez-vous.."
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
-            {message || postPicture || link.length > 20 ? (
-              <>
-                <Image src={userData.picture} alt="user-pic" width={50} height={50} />
-
-                <h5>{userData.username}</h5>
-
-                <span>{timestampParser(Date.now())}</span>
-
-                <p>{message}</p>
-
-                <Image src={postPicture} alt="" />
-                {link && (
-                  <iframe
-                    title="link"
-                    width="415"
-                    height="400"
-                    src={link}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                )}
-              </>
-            ) : null}
-            <Container fluid className="footer-form-container">
-              {isEmpty(link) && (
-                <>
-                  <Image
-                    className="mt-2 icon-img-file"
-                    fluid={true}
-                    width={25}
-                    height={25}
-                    src="./img/icons/picture.svg"
-                    alt="post-img-newform"
-                  />
-                  <input
-                    className="input-icon-img-file"
-                    type="file"
-                    id="file"
-                    name="file"
-                    accept=".jpg, .jpeg, .png .gif"
-                    onChange={handlePicture}
-                  />
-                </>
-              )}
-              <Container fluid className="button-container mt-2">
-                {link && (
-                  <Button onClick={() => setLink('')} variant="danger">
-                    Supprimer la vidéo
-                  </Button>
-                )}
-                {message || postPicture || link.length > 20 ? (
-                  <Button onClick={cancelPost} variant="danger">
-                    Annuler message
-                  </Button>
-                ) : null}
-
-                <Button onClick={handlePost} variant="danger">
-                  Envoyer
-                </Button>
-              </Container>
-            </Container>
           </Card>
+
+          {message || postPicture || link.length > 20 ? (
+            <>
+              <Card className="card-profil-form mt-2">
+                <Card.Header className="card-profil-form-header d-flex flex-column align-items-center">
+                  <Image
+                    roundedCircle
+                    className="mb-3"
+                    width={70}
+                    height={70}
+                    src={userData.picture}
+                    alt="profil-picture-newform"
+                  />
+                  <Card.Title>{userData.username}</Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  <Image src={postPicture} fluid={true} alt="" />
+                  {link && (
+                    <iframe
+                      title="link"
+                      width="200"
+                      height="200"
+                      src={link}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  )}
+                  <Card.Text>{message}</Card.Text>
+                </Card.Body>
+                <span className=" d-flex justify-content-end mb-2" style={{ fontSize: '14px' }}>
+                  {timestampParser(Date.now())}
+                </span>
+              </Card>
+            </>
+          ) : null}
+
+          {isEmpty(link) && (
+            <>
+              <Image
+                className="mt-2 icon-img-file"
+                fluid={true}
+                width={25}
+                height={25}
+                src="./img/icons/picture.svg"
+                alt="post-img-newform"
+              />
+              <input
+                className="input-icon-img-file"
+                type="file"
+                id="file"
+                name="file"
+                accept=".jpg, .jpeg, .png .gif"
+                onChange={handlePicture}
+              />
+            </>
+          )}
+
+          {link && (
+            <Button onClick={() => setLink('')} variant="danger" className="mb-2">
+              Supprimer la vidéo
+            </Button>
+          )}
+          {message || postPicture || link.length > 20 ? (
+            <Button onClick={cancelPost} variant="danger" className="mb-2">
+              Annuler message
+            </Button>
+          ) : null}
+
+          <Button onClick={handlePost} variant="danger" className="mb-2">
+            Envoyer
+          </Button>
         </>
       )}
     </Container>

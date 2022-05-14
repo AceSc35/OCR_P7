@@ -23,7 +23,7 @@
   width: 24px;
   height: 24px;
   position: relative;
-  transform: translate(-22px, 15px);
+  transform: translate(-1px, -23px);
   opacity: 0;
   cursor: pointer;
 }

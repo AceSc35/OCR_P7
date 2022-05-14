@@ -40,20 +40,21 @@ const CardComments = ({ post }) => {
       {post.Comments.map((comment) => {
         return (
           <Container fluid key={comment.id} className="mb-2">
-            <Card className="flex-row" style={{ width: '15rem' }}>
-              <Card.Header>
+            <Card>
+              <Card.Header style={{ backgroundColor: 'rgb(235, 201, 209' }}>
                 <Image
+                  roundedCircle
                   width={70}
-                  height={80}
+                  height={70}
                   src={comment.User.picture}
                   alt="profil-picture-comment"
                 />
-                <Card.Title className="mt-2" style={{ fontSize: '15px' }}>
+                <Card.Title className="mt-2" style={{ fontSize: '15px', textAlign: 'center' }}>
                   {comment.User.username}
                 </Card.Title>
               </Card.Header>
               <Card.Body>
-                <Card.Text>{comment.message}</Card.Text>
+                <Card.Text style={{ maxWidth: '100%' }}>{comment.message}</Card.Text>
                 <DeleteComment comment={comment} postId={post.id} />
               </Card.Body>
             </Card>

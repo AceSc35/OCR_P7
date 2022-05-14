@@ -47,7 +47,9 @@ const DeleteComment = ({ comment, postId }) => {
             }
           }}
         >
-          <Image width={20} height={20} fluid={true} src="./img/icons/trash.svg" alt="trash" />
+          <div className="trash d-flex flex-row-reverse">
+            <Image width={20} height={20} fluid={true} src="./img/icons/trash.svg" alt="trash" />
+          </div>
         </span>
       )}
     </Container>

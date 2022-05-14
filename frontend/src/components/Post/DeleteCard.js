@@ -25,7 +25,15 @@ function DeleteCard(props) {
         }
       }}
     >
-      <Image width={20} height={20} fluid={true} src="./img/icons/trash.svg" alt="trash" />
+      <Image
+        width={30}
+        height={30}
+        fluid={true}
+        src="./img/icons/trash.svg"
+        alt="trash"
+        className="mt-2"
+        style={{ marginRight: '3px' }}
+      />
     </div>
   );
 }
