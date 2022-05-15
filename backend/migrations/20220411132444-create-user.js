@@ -29,6 +29,7 @@ module.exports = {
       picture: {
         type: Sequelize.STRING,
         allowNull: true,
+        defaultValue: './img/logo-groupomania/icon.png',
       },
       bio: {
         type: Sequelize.STRING,

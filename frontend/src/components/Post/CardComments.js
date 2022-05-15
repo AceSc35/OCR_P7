@@ -19,6 +19,7 @@ import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import '../../style/CardPost.css';
 
 const CardComments = ({ post }) => {
   const [message, setMessage] = useState('');
@@ -41,7 +42,7 @@ const CardComments = ({ post }) => {
         return (
           <Container fluid key={comment.id} className="mb-2">
             <Card>
-              <Card.Header style={{ backgroundColor: 'rgb(235, 201, 209' }}>
+              <Card.Header className="d-flex flex-column align-items-center card-background">
                 <Image
                   roundedCircle
                   width={70}
@@ -49,12 +50,10 @@ const CardComments = ({ post }) => {
                   src={comment.User.picture}
                   alt="profil-picture-comment"
                 />
-                <Card.Title className="mt-2" style={{ fontSize: '15px', textAlign: 'center' }}>
-                  {comment.User.username}
-                </Card.Title>
+                <Card.Title className="mt-2 title-card">{comment.User.username}</Card.Title>
               </Card.Header>
               <Card.Body>
-                <Card.Text style={{ maxWidth: '100%' }}>{comment.message}</Card.Text>
+                <Card.Text className="text-card">{comment.message}</Card.Text>
                 <DeleteComment comment={comment} postId={post.id} />
               </Card.Body>
             </Card>

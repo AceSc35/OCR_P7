@@ -6,3 +6,20 @@
 .sans-bordure {
   border: unset;
 }
+
+.card-background {
+  background-color: rgb(235, 201, 209) !important;
+}
+
+.icon-post {
+  margin-right: 3px !important;
+}
+
+.title-card {
+  font-size: 15px !important;
+  text-align: center !important;
+}
+
+.text-card {
+  max-width: 100%;
+}

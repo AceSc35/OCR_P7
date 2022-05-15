@@ -24,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
 
       isAdmin: { type: DataTypes.BOOLEAN, allowNull: false, default: false },
 
-      picture: { type: DataTypes.STRING, allowNull: true }, //defaultValue:"image profil"
+      picture: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: './img/logo-groupomania/icon.png',
+      },
 
       bio: { type: DataTypes.STRING(350) },
     },

@@ -54,10 +54,7 @@ const CardPost = ({ post }) => {
       ) : (
         <>
           <Card>
-            <Card.Header
-              style={{ backgroundColor: 'rgb(235, 201, 209' }}
-              className="d-flex flex-column align-items-center"
-            >
+            <Card.Header className="d-flex flex-column align-items-center card-background">
               <Image
                 className="mb-2"
                 width={100}
@@ -104,8 +101,8 @@ const CardPost = ({ post }) => {
                 <iframe
                   className="mb-3"
                   title="post-video"
-                  width="300"
-                  height="300"
+                  width="247"
+                  height="220"
                   src={post.link}
                   frameBorder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -145,8 +142,7 @@ const CardPost = ({ post }) => {
             {userData.id === post.User.id ? (
               <>
                 <Image
-                  className="mt-2"
-                  style={{ marginRight: '3px' }}
+                  className="mt-2 icon-post"
                   width={30}
                   height={30}
                   fluid={true}
@@ -160,11 +156,11 @@ const CardPost = ({ post }) => {
               userData.isAdmin && (
                 <>
                   <Image
+                    className="icon-post"
                     width={30}
                     height={30}
                     fluid={true}
                     onClick={() => setIsUpdated(!isUpdated)}
-                    style={{ marginRight: '3px' }}
                     src="./img/icons/edit.svg"
                     alt="edit"
                   />
