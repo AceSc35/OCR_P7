@@ -49,7 +49,9 @@ const SignUpForm = () => {
       {formSubmit ? (
         <>
           <SignInForm />
-          <p className="mt-2 custom-color">L'inscription est un succès, veuillez-vous connecter</p>
+          <p className="mt-2" style={{ color: '#00701c' }}>
+            L'inscription est un succès, veuillez-vous connecter
+          </p>
         </>
       ) : (
         <Form onSubmit={handleRegister}>
