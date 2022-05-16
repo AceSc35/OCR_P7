@@ -9,7 +9,7 @@
     <li>Sequelize</li>
   </ul>
   
-  <h4>Attention, vous devez avoir REACT, Node et MySQL installés sur votre ordinateur, vérifier également le config.json que vos ID SQL correspondent </h4>
+  <h4>Attention, vous devez avoir REACT, Node et MySQL installés sur votre ordinateur, vérifier également le config.json que vos ID SQL correspondent ( le password dans le "development" doit être celui de votre "compte" SQL ) </h4>
   
   <h2>Comment installer le backend</h2>
   
