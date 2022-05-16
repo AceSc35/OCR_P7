@@ -12,8 +12,8 @@
 <h2>Comment l'installer ?</h2>
 
 <ul>
- <li>cd frontend</li>
-<li>npm install</li>
+<li>cd frontend</li>
+<li>npm install --legacy-peer-deps</li>
 <li>npm start</li>
 </ul>
 
