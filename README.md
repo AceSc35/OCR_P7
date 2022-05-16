@@ -4,7 +4,7 @@
   Résumé
  <h2/>
 
- <p>Le projet de groupomania est de construire un réseau social interne pour ses employés. Le but de ce réseau est de faciliter les intéractions entre collègues. Je dois développer une première version de l'application.</p>
+  <p>Le projet de groupomania est de construire un réseau social interne pour ses employés. Le but de ce réseau est de faciliter les intéractions entre collègues. Je dois développer une première version de l'application.</p>
 
   <h2> Cahier des charges </h2>
   
@@ -28,7 +28,7 @@
     <li> Possibilité de partager une vidéo youtube /li>
   </ul>
   
-    <h3>Comments</h3>
+<h3>Comments</h3>
   
   <ul>
     <li> Ajout et suppression d'un commentaire sur une publication </li>
