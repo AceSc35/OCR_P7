@@ -13,6 +13,7 @@
   
   <h2>Comment installer le backend</h2>
   
+  
    <ul>
     <li>cd backend</li>
     <li>npm install</li>
@@ -22,6 +23,8 @@
   </ul>
   
   <h2>Les variables d'environnement</h2>
+  
+   Un .env doit être crée dans le dossier 'config' du backend pour que le projet soit opérationnel
   
    <ul>
     <li>PORT=5000</li>
