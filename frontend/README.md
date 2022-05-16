@@ -19,7 +19,7 @@
 
 <h2>Les variables d’environnement</h2>
 
-Un .env doit être créer à la racine du front pour que le projet soit opérationnel 
+Un .env doit être crée à la racine du front pour que le projet soit opérationnel 
 
 <ul>
   <li>REACT_APP_API_URL=http://localhost:5000/</li>
